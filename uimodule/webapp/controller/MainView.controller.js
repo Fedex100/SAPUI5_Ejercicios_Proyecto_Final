@@ -8,7 +8,7 @@ sap.ui.define(
     return BaseController.extend("com.te.weatherApp.controller.MainView", {
       onInit: function () {
         var weatherData = new JSONModel(
-          "https://api.openweathermap.org/data/2.5/onecall?lat=-34&lon=-58&appid=25e99531109bc5188e4f9c6875e5a0e6&units=metric"
+          "https://api.openweathermap.org/data/2.5/onecall?lat=-34&lon=-58&appid={API}&units=metric"
         );
         this.getView().setModel(weatherData);
       },
