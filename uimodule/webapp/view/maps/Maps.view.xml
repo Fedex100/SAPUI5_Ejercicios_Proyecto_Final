@@ -1,0 +1,33 @@
+<mvc:View controllerName="com.te.proyectoFinal.controller.maps.Maps"
+  displayBlock="true"
+  xmlns="sap.m"
+  xmlns:core="sap.ui.core"
+  xmlns:mvc="sap.ui.core.mvc"
+  xmlns:html="http://www.w3.org/1999/xhtml">
+
+  <Page title="{i18n>titleMap}">
+        <content> <html:div id="map" class="map"></html:div>
+        </content>
+        <footer>
+          <Bar>
+            <contentLeft>
+              <Button text="{i18n>currentLoc}" type="Accept" press="getLocation" />
+              <Button text="{i18n>startMap}" type="Accept" press="startMap" />
+              <Button text="{i18n>addMarker}" type="Accept" press="addMarker" />
+              <Button text="{i18n>enableZoom}" type="Accept" press="enableZoom" />
+              <Select
+              forceSelection="false"
+              selectedKey="{/TerrainID}"
+              items="{
+                path: '/Terrains',
+                sorter: { path: 'Name' }
+              }"
+              change="onChange">
+              <core:ListItem key="{TerrainID}" text="{Name}" />
+            </Select>
+            </contentLeft>
+
+          </Bar>
+        </footer>
+      </Page>
+</mvc:View>

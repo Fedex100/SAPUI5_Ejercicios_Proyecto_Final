@@ -1,0 +1,54 @@
+<mvc:View controllerName="com.te.proyectoFinal.controller.countdown.Countdown"
+  displayBlock="true"
+  xmlns="sap.m"
+  xmlns:l="sap.ui.layout"
+  xmlns:mvc="sap.ui.core.mvc"
+  xmlns:grid="sap.ui.layout.cssgrid"
+  xmlns:core="sap.ui.core"
+  >
+  <Page id = "tiles" showHeader="false">
+     
+	
+    <grid:CSSGrid
+			id="grid1"
+			gridTemplateColumns="1fr"
+			gridGap="1rem">
+        <Title text="{i18n>titleCountDown}"/>
+        <Image src="/resources/img/islandia_invierno.jpg"/>
+      	
+
+      	
+
+    <grid:CSSGrid 
+        id="grid2"
+        gridTemplateColumns="1fr 1fr 1fr 1fr"
+        gridGap="1rem">
+		<GenericTile class="sapUiTinyMarginBegin sapUiTinyMarginTop tileLayout" header="{i18n>days}" press="press">
+		    <TileContent >
+			    <NumericContent id="daysId" value="{timer>/days}" valueColor="Good" withMargin="false" />
+		    </TileContent>
+	    </GenericTile>
+
+        <GenericTile class="sapUiTinyMarginBegin sapUiTinyMarginTop tileLayout" header="{i18n>hours}" press="press">
+            <TileContent >
+                <NumericContent id="hoursId" value="{timer>/hours}" valueColor="Good" withMargin="false" />
+            </TileContent>
+        </GenericTile>
+        <GenericTile class="sapUiTinyMarginBegin sapUiTinyMarginTop tileLayout" header="{i18n>min}" press="press">
+		    <TileContent >
+			    <NumericContent id="minutesId" value="{timer>/minutes}"  valueColor="Good" withMargin="false" />
+		    </TileContent>
+	    </GenericTile>
+
+        <GenericTile class="sapUiTinyMarginBegin sapUiTinyMarginTop tileLayout" header="{i18n>sec}" press="press">
+            <TileContent >
+                <NumericContent id="secondsId" value="{timer>/seconds}" valueColor="Neutral" withMargin="false" />
+            </TileContent>
+        </GenericTile>
+       
+
+        </grid:CSSGrid>
+	</grid:CSSGrid>
+  </Page>
+
+</mvc:View>

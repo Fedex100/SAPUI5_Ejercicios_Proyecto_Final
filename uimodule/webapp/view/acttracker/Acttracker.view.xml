@@ -1,0 +1,124 @@
+<mvc:View controllerName="com.te.proyectoFinal.controller.acttracker.Acttracker" 
+displayBlock="true"
+  xmlns="sap.m"
+  xmlns:l="sap.ui.layout"
+  xmlns:mvc="sap.ui.core.mvc"
+  xmlns:unified="sap.ui.unified"
+  xmlns:core="sap.ui.core"
+ height="100%"
+>
+  <Page id="acttracker" showHeader="true" title="{i18n>titleActTra}">
+    <customHeader>
+			
+      <Toolbar>
+
+				<ToolbarSpacer/>
+				<Title text="{i18n>titleActTra}" level="H2"/>
+				<ToolbarSpacer/>
+
+			</Toolbar>
+
+		</customHeader>
+		<subHeader>
+			<Toolbar>
+				<ToolbarSpacer/>
+          <RadioButton 
+          valueState="Success"
+          groupName="GroupB"
+          text="{i18n>table}"
+          selected="{view>/table}"/>
+           <RadioButton 
+          valueState="Warning"
+          groupName="GroupB"
+          text="{i18n>calendar}"
+          selected="{view>/calendar}"/>
+				<ToolbarSpacer/>
+			</Toolbar>
+
+		</subHeader>
+        	<Table id="idProductsTable"
+		inset="false"
+		items="{acttracker>/}"
+    visible= "{view>/table}">
+		<columns>
+			<Column
+				width="12em">
+				<Text text="{i18n>taskTitle}" />
+			</Column>
+			<Column
+				minScreenWidth="Tablet"
+				demandPopin="true">
+				<Text text="{i18n>company}" />
+			</Column>
+			<Column
+				minScreenWidth="Desktop"
+				demandPopin="true">
+				<Text text="{i18n>startDate}" />
+			</Column>
+			<Column
+				minScreenWidth="Desktop"
+				demandPopin="true">
+				<Text text="{i18n>endDate}" />
+        
+			</Column>
+				<Column
+				minScreenWidth="Desktop"
+				demandPopin="true"
+				hAlign="End">
+				<Text text="{i18n>description}" />
+        
+			</Column>
+		</columns>
+		<items>
+			<ColumnListItem>
+				<cells>
+					<Text
+						text="{acttracker>taskTitle}" />
+					<Text
+						text="{acttracker>company}" />
+					<ObjectNumber
+						number="{acttracker>startDate}"
+						unit="{WeightUnit}"
+						state="{
+              path: 'acttracker>startDate',
+							formatter: '.formatState'}" />
+					<ObjectNumber
+							number="{acttracker>endDate}"
+							unit="{WeightUnit}"
+						state="{
+              path: 'acttracker>endDate',
+							formatter: '.formatState'}"  />
+          <Text
+						text="{acttracker>description}" />
+				</cells>
+			</ColumnListItem>
+		</items>
+	</Table>
+  <VBox class="sapUiSmallMargin" visible="{view>/calendar}">
+
+		<SinglePlanningCalendar
+			id="SPC1"
+			class="sapUiSmallMarginTop"
+			title= "My Calendar"
+      moreLinkPress="handleMoreLinkPress"
+			viewChange="handleViewChange"
+			appointments="{path: 'acttracker>/'}">
+			<views>
+				<SinglePlanningCalendarDayView key="DayView" title="Day" />
+				<SinglePlanningCalendarWorkWeekView key="WorkWeekView" title="Work Week" />
+				<SinglePlanningCalendarWeekView key="WeekView" title="Week" />
+				<SinglePlanningCalendarMonthView key="MonthView" title="Month" />
+			</views>
+			<appointments>
+				<unified:CalendarAppointment
+					title= "{acttracker>taskTitle}"
+					text= "{acttracker>company}"
+          type="{acttracker>ctype}"
+					startDate= "{path: 'acttracker>startDate', formatter: '.formatDate'}"
+					endDate= "{path: 'acttracker>endDate', formatter: '.formatDate'}">
+				</unified:CalendarAppointment>
+			</appointments>
+		</SinglePlanningCalendar>
+	</VBox>
+  </Page>
+</mvc:View>
